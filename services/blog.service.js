@@ -1,4 +1,4 @@
-const logger = require("../config/logger");
+// const console = require("../config/console");
 const { blogModel } = require("../model");
 
 const create = async (payload) => {

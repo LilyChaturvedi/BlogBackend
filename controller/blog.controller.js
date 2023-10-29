@@ -1,4 +1,4 @@
-const logger = require("../config/logger");
+// const console = require("../config/console");
 const { blogService } = require("../services");
 
 /**
@@ -8,7 +8,7 @@ const { blogService } = require("../services");
 
 const create = async (req, res) => {
   try {
-    logger.debug("Create Body :" + JSON.stringify(req.body));
+    console.debug("Create Body :" + JSON.stringify(req.body));
 
     const newBlog = await blogService.create(req.body);
 
@@ -17,7 +17,7 @@ const create = async (req, res) => {
       message: "Blog Added SuccessFully!!",
     });
   } catch (error) {
-    logger.error("🚀 ~ file: blog.controller.js:11 ~ create ~ error:", error);
+    console.error("🚀 ~ file: blog.controller.js:11 ~ create ~ error:", error);
 
     return res.status(400).json({
       error: true,
@@ -30,7 +30,7 @@ const find = async (req, res) => {
   try {
     const id = req.params.id;
 
-    logger.debug(`Find By Id:` + id);
+    console.debug(`Find By Id:` + id);
 
     const blog = await blogService.find(id);
 
@@ -40,7 +40,7 @@ const find = async (req, res) => {
       result: blog,
     });
   } catch (error) {
-    logger.error("🚀 ~ file: blog.controller.js:28 ~ find ~ error:" + error);
+    console.error("🚀 ~ file: blog.controller.js:28 ~ find ~ error:" + error);
 
     return res.status(400).json({
       error: true,
@@ -59,7 +59,7 @@ const findAll = async (req, res) => {
       result: blogs,
     });
   } catch (error) {
-    logger.error("🚀 ~ file: blog.controller.js:52 ~ findAll ~ error:", error);
+    console.error("🚀 ~ file: blog.controller.js:52 ~ findAll ~ error:", error);
 
     return res.status(400).json({
       error: true,
@@ -81,7 +81,7 @@ const update = async (req, res) => {
       message: "Blogs Updated SuccessFully!!",
     });
   } catch (error) {
-    logger.log("🚀 ~ file: blog.controller.js:74 ~ update ~ error:", error);
+    console.log("🚀 ~ file: blog.controller.js:74 ~ update ~ error:", error);
 
     return res.status(400).json({
       error: true,
@@ -101,7 +101,7 @@ const remove = async (req, res) => {
       message: "Blogs Deleted SuccessFully!!",
     });
   } catch (error) {
-    logger.error("🚀 ~ file: blog.controller.js:77 ~ remove ~ error:", error);
+    console.error("🚀 ~ file: blog.controller.js:77 ~ remove ~ error:", error);
 
     return res.status(400).json({
       error: true,

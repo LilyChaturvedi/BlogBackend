@@ -2,7 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const logger = require("./config/logger");
+const Logger = require("./config/logger");
 require("dotenv").config();
 const app = express();
 
@@ -21,13 +21,14 @@ app.use("/api/blog", blogRoutes);
 mongoose
   .connect(process.env.MONGOOSE_URL)
   .then(() => {
-    logger.info(`Connected To DataBase `);
+    console.info(`Connected To DataBase `);
 
     // *Server Connection
     app.listen(process.env.PORT || 5000, () => {
-      logger.info(`Server Started at port no:${process.env.PORT || 5000}`);
+      console.info(`Server Started at port no:${process.env.PORT || 5000}`);
     });
   })
   .catch((error) => {
-    logger.error(`Error With DataBase Connection ${error}`);
+    console.log(typeof process.env.MONGOOSE_URL);
+    console.error(`Error With DataBase Connection ${error}`);
   });

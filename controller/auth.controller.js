@@ -1,4 +1,3 @@
-const logger = require("../config/logger");
 const { authService } = require("../services");
 
 /**
@@ -15,7 +14,7 @@ const login = async (req, res) => {
       result: token,
     });
   } catch (error) {
-    logger.error(`controller/auth/login : ${error}`);
+    console.error(`controller/auth/login : ${error}`);
 
     return res.status(400).json({
       error: true,
@@ -37,7 +36,7 @@ const register = async (req, res) => {
       message: "User Registered SuccessFully!!",
     });
   } catch (error) {
-    logger.error(`controller/auth/register : ${error}`);
+    console.error(`controller/auth/register : ${error}`);
 
     return res.status(400).json({
       error: true,
